@@ -1,7 +1,20 @@
-
 import os
 
-os.system('cls' if os.name == 'nt' else 'clear')
+# Allow colors on windows sytems.
+os.system('color')
+
+
+class Color:
+    """
+    Color Class: Store text color/style ANSI escapes sequences.
+    """
+    PURPLE = '\033[95m'
+    BLUE = '\033[94m'
+    CYAN = '\033[96m'
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    END = '\033[0m'
 
 
 class Menu():
@@ -26,6 +39,28 @@ class Menu():
         """
         os.system('cls' if os.name == 'nt' else 'clear')
 
+    def displaylogo(self):
+        """
+        Displays the HackerSchool logo.
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
+        logo = \
+            f"""{Color.BOLD}{Color.GREEN}
+ _   _            _               ____       _                 _
+| | | | __ _  ___| | _____ _ __  / ___|  ___| |__   ___   ___ | |
+| |_| |/ _` |/ __| |/ / _ \ '__| \___ \ / __| '_ \ / _ \ / _ \| |
+|  _  | (_| | (__|   <  __/ |     ___) | (__| | | | (_) | (_) | |
+|_| |_|\__,_|\___|_|\_\___|_|    |____/ \___|_| |_|\___/ \___/|_|
+                {Color.END}
+        """
+        print(logo)
+
     def mainmenu(self):
         """
         Displays the main menu.
@@ -37,12 +72,8 @@ class Menu():
         -------
         None
         """
-        print("_   _            _               ____       _                 _ ")
-        print("| | | | __ _  ___| | _____ _ __  / ___|  ___| |__   ___   ___ | |")
-        print("| |_| |/ _` |/ __| |/ / _ \ '__| \___ \ / __| '_ \ / _ \ / _ \| |")
-        print("|  _  | (_| | (__|   <  __/ |     ___) | (__| | | | (_) | (_) | |")
-        print("|_| |_|\__,_|\___|_|\_\___|_|    |____/ \___|_| |_|\___/ \___/|_|")
-        print("\n\n")
+        self.clearscreen()
+        self.displaylogo()
         print("    Login                  Register                  Exit ")
         print("   type(L)                  type(R)                 type(E)")
         print("\n")
@@ -86,7 +117,6 @@ class Menu():
         else:
             print("Please type a valid option! ")
             self.getoption()
-
 
 
 

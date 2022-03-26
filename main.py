@@ -138,22 +138,29 @@ class Menu():
         username = input("\t\t\t  username: ")
         password = input("\t\t\t  password: ")
         auth = self.verifyuser(username, password)
-        
+
         # Case invalid user.
         if auth == -2:
-            print(f"\n\n{Color.RED}Theres no user{Color.END} "\
-            f"{Color.BOLD}{username}{Color.END} "\
-            f"{Color.BOLD}{Color.RED}registered in our database{Color.END}")
+            print(f"\n\n{Color.RED}Theres no user{Color.END} "
+                  f"{Color.BOLD}{username}{Color.END} "
+                  f"{Color.BOLD}{Color.RED}registered in our database{Color.END}")
+            # Wait 2 seconds and return to the main menu.
+            time.sleep(2)
+            self.mainmenu()
+
         # Case invalid password.
         elif auth == -1:
             print(f"\n\n{Color.BOLD}{Color.RED}Wrong password!{Color.END}")
+            # Wait 2 seconds and return to the main menu.
+            time.sleep(2)
+            self.mainmenu()
         else:
-            print(f"\n\n\t\t\t" \
-                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+            print(f"\n\n\t\t\t"
+                  f"{Color.BOLD}{Color.GREEN}SUCCESSFUL LOGIN!{Color.END}")
+            # Wait 0.2 seconds and return to the main menu.
             time.sleep(0.2)
             self.clearscreen()
-            self.loadingscreen()
-            time.sleep(5)
+            self.loadingscreen("SUCCESSFUL LOGIN")
 
     def verifyuser(self, username, password):
         """
@@ -177,46 +184,49 @@ class Menu():
             if username == user_pass[0]:
                 # Check if the password matches the username.
                 if password != user_pass[1]:
+                    database.close()
                     return -1
+                database.close()
                 return
+        database.close()
         return -2
-    
-    def loadingscreen(self):
+
+    def loadingscreen(self, message):
         """
-        Displays the loading screen.
+        Displays the loading screen, with the specified message.
         Parameters
         ----------
-        None
-        
+        message: str
+
         Returns
         -------
         None
         """
-        print(f"\n\n\t\t\t" \
-                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print(f"\n\n\t\t\t"
+              f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   Loading…")
         print("\t\t\t   █▒▒▒▒▒▒▒▒▒""")
         self.clearscreen()
-        print(f"\n\n\t\t\t" \
-                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print(f"\n\n\t\t\t"
+              f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   25%")
         print("\t\t\t   ███▒▒▒▒▒▒▒")
         time.sleep(0.75)
         self.clearscreen()
-        print(f"\n\n\t\t\t" \
-                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print(f"\n\n\t\t\t"
+              f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   50%")
         print("\t\t\t   █████▒▒▒▒▒")
         time.sleep(0.75)
         self.clearscreen()
-        print(f"\n\n\t\t\t" \
-                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print(f"\n\n\t\t\t"
+              f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   75%")
         print("\t\t\t   ███████▒▒▒")
         time.sleep(0.75)
         self.clearscreen()
-        print(f"\n\n\t\t\t" \
-                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print(f"\n\n\t\t\t"
+              f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   100%")
         print("\t\t\t   ██████████")
         self.clearscreen()

@@ -23,7 +23,7 @@ class Menu():
     """
 
     def __init__(self):
-        pass
+        self.mainmenu()
 
     def clearscreen(self):
         """
@@ -77,6 +77,7 @@ class Menu():
         print("    Login                  Register                  Exit ")
         print("   type(L)                  type(R)                 type(E)")
         print("\n")
+        self.getoption()
 
     def getoption(self):
         """
@@ -87,10 +88,10 @@ class Menu():
 
         Returns
         -------
-        str
+        None
         """
         option = input("Option: ")
-        return option
+        self.handleoption(option)
 
     def handleoption(self, option):
         """
@@ -98,29 +99,43 @@ class Menu():
         ask user again for a valid option.
         Parameters
         ----------
-        option: str
+        None
 
         Returns
         -------
         None
         """
         # Login option.
-        if (option == 'L' or option == 'l'):
-            pass
+        if (option in ('L', 'l')):
+            self.loginmenu()
         # Register option.
-        elif (option == 'R' or option == 'r'):
+        elif (option in ('R', 'r')):
             pass
         # Exit option.
-        elif (option == 'E' or option == 'e'):
+        elif (option in ('E', 'e')):
             quit()
         # Invalid option.
         else:
             print("Please type a valid option! ")
             self.getoption()
 
+    def loginmenu(self):
+        """
+        Displays the login Menu.
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+         """
+        self.clearscreen()
+        self.displaylogo()
+        print(f"{Color.BOLD}                           Welcome back!\n\n")
+        username = input("                     username: ")
+        password = input("                     password: ")
+        
 
 
 mymenu = Menu()
-mymenu.mainmenu()
-choice = mymenu.getoption()
-mymenu.handleoption(choice)

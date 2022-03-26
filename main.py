@@ -48,4 +48,30 @@ class Menu():
         option = input("Option: ")
         return option
 
+    def handleoption(self, option):
+        """
+        Handles the user option. If it's an invalid option,
+        ask user again for a valid option.
+        Parameters
+        ----------
+        option: str
 
+        Returns
+        -------
+        None
+        """
+        if (option == 'L' or option == 'l'):
+            pass
+        elif (option == 'R' or option == 'r'):
+            pass
+        elif (option == 'E' or  option == 'e'):
+            quit()
+        else:
+            print("Please type a valid option! ")
+            self.getoption()
+
+
+mymenu = Menu()
+mymenu.mainmenu()
+choice = mymenu.getoption()
+mymenu.handleoption(choice)

@@ -1,6 +1,7 @@
+from time import time
 import main as c
 import os
-
+import time
 
 class Calculator():
     """
@@ -59,7 +60,8 @@ class Calculator():
         """
         self.displaylogo()
         print("\n\t\t  1) Solve basic calculations.")
-        print("\t\t  2) Exit Calculator.")
+        print("\t\t  2) Solve one variable equation. ")
+        print("\t\t  3) Exit Calculator.")
         self.getoption()
 
     def getoption(self):
@@ -73,7 +75,7 @@ class Calculator():
         -------
         None
         """
-        option = input("\t\t  Option: ")
+        option = input("\n\t\t  Option: ")
         self.handleoption(option)
 
     def handleoption(self, option):
@@ -92,7 +94,11 @@ class Calculator():
         if option == '1':
             self.clearscreen()
             self.docalculation()
+        # One variable equation option
         elif option == '2':
+            self.clearscreen()
+            self.onevariablesolver()
+        elif option == '3':
             # Return to user menu.
             return
         else:
@@ -105,7 +111,7 @@ class Calculator():
         Parameters
         ----------
         None
-        
+
         Results
         -------
         None
@@ -122,7 +128,28 @@ class Calculator():
               f"for exponent            ({c.Color.BOLD}{c.Color.GREEN}%"
               f"{c.Color.END}) for rest of")
 
+        # Get expression.
         expression = input("\n\n\t  Enter your expression here -> ")
+        # Eval expression.
         result = eval(expression)
         print(f"\n\t                   {c.Color.GREEN}result: {c.Color.END}"
               f"{result}")
+
+    def onevariablesolver(self):
+        """
+        a
+        """
+        self.displaylogo()
+        print(f"\t{c.Color.BOLD}              Please use: ax + b{c.Color.END}")
+
+        # Get 'a' and 'b' values
+        a = input("\n\n\t  Enter value of 'a' -> ")
+        b = input("\n\n\t  Enter value of 'b' -> ")
+        # Find x
+        x = -int(b) / int(a)
+        print(f"\n\t                   {c.Color.GREEN}x = {c.Color.END}"
+              f"{x}")
+        time.sleep(2)
+        self.clearscreen()
+        # Go back to calculator main menu
+        self.mainmenu()

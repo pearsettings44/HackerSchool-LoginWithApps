@@ -1,7 +1,8 @@
 import os
 import time
+import webbrowser
 import calculator
-
+import webbrowser
 # Allow colors on windows sytems.
 os.system('color')
 
@@ -115,6 +116,10 @@ class Menu():
         # Exit option.
         elif option in ('E', 'e'):
             quit()
+        # Shhhh... :)
+        elif option == "easteregg":
+            webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+
         # Invalid option.
         else:
             print("Please type a valid option! ")
@@ -161,7 +166,7 @@ class Menu():
             # Wait 0.2 seconds and return to the main menu.
             time.sleep(0.2)
             self.clearscreen()
-            self.loadingscreen("SUCCESSFUL LOGIN")
+            self.loadingscreen("HACKING INTO THE MAINFRAME . . .")
             self.usermenu(username)
 
     def verifyuser(self, username, password):
@@ -336,6 +341,8 @@ class Menu():
         # Change password
         elif option == '2':
             self.changepassword(username)
+            self.loadingscreen("Changing Password . . .")
+            self.usermenu(username)
         # Log out
         elif option == '3':
             self.clearscreen()

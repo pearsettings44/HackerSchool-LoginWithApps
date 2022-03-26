@@ -150,7 +150,15 @@ class Menu():
 
     def verifyuser(self, username, password):
         """
-        PILA CONA X!
+        Check if the username and password are valid.
+        Parameters
+        ----------
+        username: str
+        password: str
+
+        Returns
+        -------
+        int
         """
         # Open the database file.
         database = open("password.txt", "r")

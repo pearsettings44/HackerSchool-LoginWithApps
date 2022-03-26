@@ -295,7 +295,44 @@ class Menu():
               f"{username}{Color.END}\n\n")
         print("\t\t\t  1) Use the calculator\n")
         print("\t\t\t  2) Change your password\n")
-        print("\t\t\t  3) Logout\n")
+        print("\t\t\t  3) Logout\n\n")
+        self.getuseroption()
 
-
+    def getuseroption(self):
+        """
+        Gets the user option.
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        None
+        """
+        option = input("\t\t\t  option:")
+        self.handleuseroption(option)
+    
+    def handleuseroption(self, option):
+        """
+        Handles the user option.
+        Parameters
+        ----------
+        option : str
+        
+        Returns
+        -------
+        None
+        """
+        if option == 1:
+            pass
+        elif option == 2:
+            pass
+        elif option == 3:
+            self.clearscreen()
+            self.loadingscreen("Loging out . . .")
+            self.mainmenu()
+        else:
+            print("Please type a valid option! ")
+            self.getuseroption()
+        
 mymenu = Menu()

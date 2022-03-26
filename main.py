@@ -143,7 +143,8 @@ class Menu():
         if auth == -2:
             print(f"\n\n{Color.RED}Theres no user{Color.END} "
                   f"{Color.BOLD}{username}{Color.END} "
-                  f"{Color.BOLD}{Color.RED}registered in our database{Color.END}")
+                  f"{Color.BOLD}{Color.RED}registered"
+                  "in our database{Color.END}")
             # Wait 2 seconds and return to the main menu.
             time.sleep(2)
             self.mainmenu()
@@ -161,6 +162,7 @@ class Menu():
             time.sleep(0.2)
             self.clearscreen()
             self.loadingscreen("SUCCESSFUL LOGIN")
+            self.usermenu(username)
 
     def verifyuser(self, username, password):
         """
@@ -255,6 +257,7 @@ class Menu():
         self.clearscreen()
         self.loadingscreen(f"Registering user {username}")
         self.clearscreen()
+        # Go back to the main menu.
         self.mainmenu()
 
     def registeruser(self, username, password):
@@ -270,8 +273,29 @@ class Menu():
         None
         """
         database = open("password.txt", "a")
+        # Write the credentials at the end of the database file.
         database.write(f"\n{username}:{password}")
         database.close()
+
+    def usermenu(self, username):
+        """
+        Displays the user menu, with option to use an app,
+        change the user password and log out.
+        Parameters
+        ----------
+        username : str
         
+        Returns
+        -------
+        None
         
+        """
+        self.displaylogo()
+        print(f"\n\t\t\t  {Color.BOLD}{Color.CYAN}Welcome back "
+              f"{username}{Color.END}\n\n")
+        print("\t\t\t  1) Use the calculator\n")
+        print("\t\t\t  2) Change your password\n")
+        print("\t\t\t  3) Logout\n")
+
+
 mymenu = Menu()

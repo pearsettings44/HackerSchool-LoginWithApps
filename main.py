@@ -111,7 +111,7 @@ class Menu():
             self.loginmenu()
         # Register option.
         elif option in ('R', 'r'):
-            pass
+            self.registermenu()
         # Exit option.
         elif option in ('E', 'e'):
             quit()
@@ -231,5 +231,47 @@ class Menu():
         print("\t\t\t   ██████████")
         self.clearscreen()
 
+    def registermenu(self):
+        """
+        Displays the register Menu.
+        Parameters
+        ----------
+        None
 
+        Returns
+        -------
+        None
+         """
+        self.clearscreen()
+        self.displaylogo()
+        print(f"{Color.BOLD}\t\t\t  Welcome!\n\n{Color.END}")
+        print(f"{Color.BOLD}\t\t\t  Enter your credentials!\n\n{Color.END}")
+
+        username = input("\t\t\t  username: ")
+        password = input("\t\t\t  password: ")
+        # Add user to the data base.
+        self.registeruser(username, password)
+        time.sleep(0.2)
+        self.clearscreen()
+        self.loadingscreen(f"Registering user {username}")
+        self.clearscreen()
+        self.mainmenu()
+
+    def registeruser(self, username, password):
+        """
+        Adds a new user to the database
+        Parameters
+        ----------
+        username: str
+        password: str
+
+        Returns
+        -------
+        None
+        """
+        database = open("password.txt", "a")
+        database.write(f"\n{username}:{password}")
+        database.close()
+        
+        
 mymenu = Menu()

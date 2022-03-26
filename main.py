@@ -328,7 +328,11 @@ class Menu():
         if option == '1':
             self.clearscreen()
             self.loadingscreen("Loading Calculator App . . .")
+            # Open App
             calculator.Calculator()
+            # After using the App, go back to user menu.
+            self.clearscreen()
+            self.usermenu(username)
         # Change password
         elif option == '2':
             self.changepassword(username)
@@ -379,6 +383,7 @@ class Menu():
         database = open("password.txt", "w")
         database.writelines(database_credentials)
         database.close()
+
 
 if __name__ == "__main__":
     mymenu = Menu()

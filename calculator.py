@@ -57,8 +57,9 @@ class Calculator():
         -------
         None
         """
-        self.displaylogo
-        print("1 )Solve basic calculations.")
+        self.displaylogo()
+        print("\n\t\t  1) Solve basic calculations.")
+        print("\t\t  2) Exit Calculator.")
         self.getoption()
 
     def getoption(self):
@@ -72,7 +73,7 @@ class Calculator():
         -------
         None
         """
-        option = input("Option: ")
+        option = input("\t\t  Option: ")
         self.handleoption(option)
 
     def handleoption(self, option):
@@ -91,6 +92,9 @@ class Calculator():
         if option == '1':
             self.clearscreen()
             self.docalculation()
+        elif option == '2':
+            # Return to user menu.
+            return
         else:
             print("Please type a valid option! ")
             self.getoption()

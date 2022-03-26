@@ -1,5 +1,6 @@
 import os
 import time
+import calculator
 
 # Allow colors on windows sytems.
 os.system('color')
@@ -19,7 +20,7 @@ class Color:
 
 class Menu():
     """
-    Menu Class: handles the HackerSchool's App screen
+    Menu Class: Represents the HackerSchool's App screen
     """
 
     def __init__(self):
@@ -324,7 +325,9 @@ class Menu():
         """
         # Use APP
         if option == '1':
-            pass
+            self.clearscreen()
+            self.loadingscreen("Loading Calculator App . . .")
+            calculator.Calculator()
         # Change password
         elif option == '2':
             self.changepassword(username)
@@ -376,4 +379,5 @@ class Menu():
         database.writelines(database_credentials)
         database.close()
 
-mymenu = Menu()
+if __name__ == "__main__":
+    mymenu = Menu()

@@ -34,4 +34,18 @@ class Menu():
         print("   type(L)                  type(R)                 type(E)")
         print("\n")
 
+    def getoption(self):
+        """
+        Gets the user option.
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        str
+        """
+        option = input("Option: ")
+        return option
+
 

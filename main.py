@@ -148,8 +148,11 @@ class Menu():
         elif auth == -1:
             print(f"\n\n{Color.BOLD}{Color.RED}Wrong password!{Color.END}")
         else:
-            
+            print(f"\n\n\t\t\t" \
+                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+            time.sleep(0.2)
             self.clearscreen()
+            self.loadingscreen()
             time.sleep(5)
 
     def verifyuser(self, username, password):
@@ -177,6 +180,46 @@ class Menu():
                     return -1
                 return
         return -2
+    
+    def loadingscreen(self):
+        """
+        Displays the loading screen.
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        None
+        """
+        print(f"\n\n\t\t\t" \
+                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print("\t\t\t   Loading…")
+        print("\t\t\t   █▒▒▒▒▒▒▒▒▒""")
+        self.clearscreen()
+        print(f"\n\n\t\t\t" \
+                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print("\t\t\t   25%")
+        print("\t\t\t   ███▒▒▒▒▒▒▒")
+        time.sleep(0.75)
+        self.clearscreen()
+        print(f"\n\n\t\t\t" \
+                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print("\t\t\t   50%")
+        print("\t\t\t   █████▒▒▒▒▒")
+        time.sleep(0.75)
+        self.clearscreen()
+        print(f"\n\n\t\t\t" \
+                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print("\t\t\t   75%")
+        print("\t\t\t   ███████▒▒▒")
+        time.sleep(0.75)
+        self.clearscreen()
+        print(f"\n\n\t\t\t" \
+                f"{Color.BOLD}{Color.GREEN}SUCESSFUL LOG IN!{Color.END}")
+        print("\t\t\t   100%")
+        print("\t\t\t   ██████████")
+        self.clearscreen()
 
 
 mymenu = Menu()

@@ -10,7 +10,6 @@ class Color:
     Color Class: Store text color/style ANSI escapes sequences.
     """
     PURPLE = '\033[95m'
-    BLUE = '\033[94m'
     CYAN = '\033[96m'
     GREEN = '\033[92m'
     RED = '\033[91m'
@@ -144,7 +143,7 @@ class Menu():
             print(f"\n\n{Color.RED}Theres no user{Color.END} "
                   f"{Color.BOLD}{username}{Color.END} "
                   f"{Color.BOLD}{Color.RED}registered"
-                  "in our database{Color.END}")
+                  f"in our database{Color.END}")
             # Wait 2 seconds and return to the main menu.
             time.sleep(2)
             self.mainmenu()
@@ -284,11 +283,11 @@ class Menu():
         Parameters
         ----------
         username : str
-        
+
         Returns
         -------
         None
-        
+
         """
         self.displaylogo()
         print(f"\n\t\t\t  {Color.BOLD}{Color.CYAN}Welcome back "
@@ -296,43 +295,85 @@ class Menu():
         print("\t\t\t  1) Use the calculator\n")
         print("\t\t\t  2) Change your password\n")
         print("\t\t\t  3) Logout\n\n")
-        self.getuseroption()
+        self.getuseroption(username)
 
-    def getuseroption(self):
+    def getuseroption(self, username):
         """
         Gets the user option.
         Parameters
         ----------
         None
-        
+
         Returns
         -------
         None
         """
         option = input("\t\t\t  option:")
-        self.handleuseroption(option)
-    
-    def handleuseroption(self, option):
+        self.handleuseroption(option, username)
+
+    def handleuseroption(self, option, username):
         """
         Handles the user option.
         Parameters
         ----------
         option : str
-        
+
         Returns
         -------
         None
         """
-        if option == 1:
+        # Use APP
+        if option == '1':
             pass
-        elif option == 2:
-            pass
-        elif option == 3:
+        # Change password
+        elif option == '2':
+            self.changepassword(username)
+        # Log out
+        elif option == '3':
             self.clearscreen()
             self.loadingscreen("Loging out . . .")
             self.mainmenu()
         else:
-            print("Please type a valid option! ")
-            self.getuseroption()
-        
+            print(f"\t\t\t  {Color.BOLD}{Color.PURPLE}Please type a "
+                  f"valid option!{Color.END} ")
+            self.getuseroption(username)
+
+    def changepassword(self, username):
+        """
+        Changes the user password.
+        Parameters
+        ----------
+        username : str
+
+        Returns
+        -------
+        None
+        """
+        self.clearscreen()
+        self.displaylogo()
+        # Get new password.
+        new_password = input("\t\t\t  New password:")
+        # Open database file.
+        database = open("password.txt", "r")
+
+        # Create a list of all lines in database.
+        database_credentials = database.readlines()
+        # Keep track of the index.
+        index = 0
+        # Iterate through all lines.
+        for credential in database_credentials:
+            line = credential.split(":")
+            # If the username matches.
+            if line[0] == username:
+                # Change the password.
+                line[1] = new_password + "\n"
+                database_credentials[index] = ":".join(line)
+                break
+            index += 1
+
+        # Change the database.
+        database = open("password.txt", "w")
+        database.writelines(database_credentials)
+        database.close()
+
 mymenu = Menu()

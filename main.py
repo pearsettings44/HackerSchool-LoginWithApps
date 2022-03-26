@@ -1,9 +1,8 @@
 
 import os
 
-# Clear the terminal's screen, using the cls command on Windows, or
-# the clear command on UNIX systems.
 os.system('cls' if os.name == 'nt' else 'clear')
+
 
 class Menu():
     """
@@ -12,6 +11,20 @@ class Menu():
 
     def __init__(self):
         pass
+
+    def clearscreen(self):
+        """
+        Clear the terminal's screen, using the cls command on Windows, or
+        the clear command on UNIX systems.
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def mainmenu(self):
         """
@@ -60,15 +73,21 @@ class Menu():
         -------
         None
         """
+        # Login option.
         if (option == 'L' or option == 'l'):
             pass
+        # Register option.
         elif (option == 'R' or option == 'r'):
             pass
-        elif (option == 'E' or  option == 'e'):
+        # Exit option.
+        elif (option == 'E' or option == 'e'):
             quit()
+        # Invalid option.
         else:
             print("Please type a valid option! ")
             self.getoption()
+
+
 
 
 mymenu = Menu()

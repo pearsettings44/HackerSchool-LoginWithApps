@@ -106,13 +106,13 @@ class Menu():
         None
         """
         # Login option.
-        if (option in ('L', 'l')):
+        if option in ('L', 'l'):
             self.loginmenu()
         # Register option.
-        elif (option in ('R', 'r')):
+        elif option in ('R', 'r'):
             pass
         # Exit option.
-        elif (option in ('E', 'e')):
+        elif option in ('E', 'e'):
             quit()
         # Invalid option.
         else:
@@ -132,10 +132,39 @@ class Menu():
          """
         self.clearscreen()
         self.displaylogo()
-        print(f"{Color.BOLD}                           Welcome back!\n\n")
+        print(f"{Color.BOLD}                           \
+            Welcome back!\n\n{Color.END}")
+
         username = input("                     username: ")
         password = input("                     password: ")
+        auth = self.verifyuser(username, password)
         
+        # Case invalid user.
+        if auth == -2:
+            print(f"Theres no user {username} registered in our database")
+        # Case invalid password.
+        elif auth == -1:
+            print("Wrong password!")
+        else:
+            print("SUCESSFUL LOG IN!")
+
+    def verifyuser(self, username, password):
+        """
+        PILA CONA X!
+        """
+        # Open the database file.
+        database = open("password.txt", "r")
+        for line in database:
+            # Get user and password (using split), and remove then \n at the
+            # the end (using rstrip()).
+            user_pass = line.rstrip().split(":")
+            # Search for a matching username.
+            if username == user_pass[0]:
+                # Check if the password matches the username.
+                if password != user_pass[1]:
+                    return -1
+                return
+        return -2
 
 
 mymenu = Menu()

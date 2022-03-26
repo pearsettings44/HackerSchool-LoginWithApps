@@ -1,4 +1,5 @@
 import os
+import time
 
 # Allow colors on windows sytems.
 os.system('color')
@@ -132,21 +133,24 @@ class Menu():
          """
         self.clearscreen()
         self.displaylogo()
-        print(f"{Color.BOLD}                           \
-            Welcome back!\n\n{Color.END}")
+        print(f"{Color.BOLD}\t\t\t  Welcome back!\n\n{Color.END}")
 
-        username = input("                     username: ")
-        password = input("                     password: ")
+        username = input("\t\t\t  username: ")
+        password = input("\t\t\t  password: ")
         auth = self.verifyuser(username, password)
         
         # Case invalid user.
         if auth == -2:
-            print(f"Theres no user {username} registered in our database")
+            print(f"\n\n{Color.RED}Theres no user{Color.END} "\
+            f"{Color.BOLD}{username}{Color.END} "\
+            f"{Color.BOLD}{Color.RED}registered in our database{Color.END}")
         # Case invalid password.
         elif auth == -1:
-            print("Wrong password!")
+            print(f"\n\n{Color.BOLD}{Color.RED}Wrong password!{Color.END}")
         else:
-            print("SUCESSFUL LOG IN!")
+            
+            self.clearscreen()
+            time.sleep(5)
 
     def verifyuser(self, username, password):
         """

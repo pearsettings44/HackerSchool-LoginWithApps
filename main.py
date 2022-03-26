@@ -213,24 +213,25 @@ class Menu():
               f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   25%")
         print("\t\t\t   ███▒▒▒▒▒▒▒")
-        time.sleep(0.75)
+        time.sleep(0.3)
         self.clearscreen()
         print(f"\n\n\t\t\t"
               f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   50%")
         print("\t\t\t   █████▒▒▒▒▒")
-        time.sleep(0.75)
+        time.sleep(0.3)
         self.clearscreen()
         print(f"\n\n\t\t\t"
               f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   75%")
         print("\t\t\t   ███████▒▒▒")
-        time.sleep(0.75)
+        time.sleep(0.3)
         self.clearscreen()
         print(f"\n\n\t\t\t"
               f"{Color.BOLD}{Color.GREEN}{message}{Color.END}")
         print("\t\t\t   100%")
         print("\t\t\t   ██████████")
+        time.sleep(0.3)
         self.clearscreen()
 
     def registermenu(self):

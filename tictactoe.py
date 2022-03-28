@@ -1,7 +1,7 @@
 import main as c
 import os
 
-class Tittactoe():
+class Tictactoe():
     """
     A class to represent a Tic Tac Toe game.
     """
@@ -54,4 +54,4 @@ class Tittactoe():
                 print(collum, end= ' ')
             print("\n", end= "")
 
-my = Tittactoe()
+my = Tictactoe()

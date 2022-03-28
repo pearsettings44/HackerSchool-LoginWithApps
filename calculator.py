@@ -1,4 +1,3 @@
-from sympy import N
 import main as c
 import os
 import time

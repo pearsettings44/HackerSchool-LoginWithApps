@@ -1,10 +1,27 @@
+import main as c
+import os
+
 class Tittactoe():
     """
     A class to represent a Tic Tac Toe game.
     """
     def __init__(self):
-        pass
+        self.createboard()
 
+    def clearscreen(self):
+            """
+            Clear the terminal's screen, using the cls command on Windows, or
+            the clear command on UNIX systems.
+            Parameters
+            ----------
+            None
+
+            Returns
+            -------
+            None
+            """
+            os.system('cls' if os.name == 'nt' else 'clear')
+    
     def createboard(self):
         """
         Creates the game board
@@ -19,7 +36,7 @@ class Tittactoe():
         board = [['-', '-', '-'],
                  ['-', '-', '-'],
                  ['-', '-', '-']]
-        return board
+        self.displayboard(board)
     
     def displayboard(self, board):
         """
@@ -38,5 +55,3 @@ class Tittactoe():
             print("\n", end= "")
 
 my = Tittactoe()
-board = my.createboard()
-my.displayboard(board)

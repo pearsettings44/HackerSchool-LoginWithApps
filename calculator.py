@@ -1,4 +1,4 @@
-from time import time
+from sympy import N
 import main as c
 import os
 import time
@@ -134,22 +134,41 @@ class Calculator():
         result = eval(expression)
         print(f"\n\t                   {c.Color.GREEN}result: {c.Color.END}"
               f"{result}")
+        time.sleep(1.5)
+        self.clearscreen()
+        self.mainmenu()
 
     def onevariablesolver(self):
         """
-        a
+        Resolves a one variable (x) equation.
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        None
         """
         self.displaylogo()
         print(f"\t{c.Color.BOLD}              Please use: ax + b{c.Color.END}")
 
-        # Get 'a' and 'b' values
-        a = input("\n\n\t  Enter value of 'a' -> ")
-        b = input("\n\n\t  Enter value of 'b' -> ")
-        # Find x
-        x = -int(b) / int(a)
-        print(f"\n\t                   {c.Color.GREEN}x = {c.Color.END}"
-              f"{x}")
-        time.sleep(2)
-        self.clearscreen()
-        # Go back to calculator main menu
-        self.mainmenu()
+        try:
+            # Get 'a' and 'b' values
+            a = input("\n\n\t  Enter value of 'a' -> ")
+            b = input("\n\n\t  Enter value of 'b' -> ")
+            # Find x
+            x = -int(b) / int(a)
+            print(f"\n\t                   {c.Color.GREEN}x = {c.Color.END}"
+                f"{x}")
+            time.sleep(2)
+            self.clearscreen()
+            # Go back to calculator main menu
+            self.mainmenu()
+        except:
+            print(f"\n\t {c.Color.BOLD}{c.Color.RED}Please enter valid 'a' and"
+                  f"'b' values.{c.Color.END}")
+            time.sleep(1.5)
+            self.clearscreen()
+            self.onevariablesolver()
+
+        

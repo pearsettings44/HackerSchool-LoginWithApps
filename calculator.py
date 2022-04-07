@@ -227,7 +227,7 @@ class Calculator():
                     break
                 i += 1
 
-        # In the end do + or -
+        # At the end do + or -
         while '+' in expression or '-' in expression:
             i = 0
             for item in expression:
